@@ -43,5 +43,5 @@ int _printf(const char *format, ...)
 	}
 	printbuffer(buffer, index);
 	va_end(ar);
-	return (i);
+	return (index);
 }
