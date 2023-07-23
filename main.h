@@ -5,8 +5,9 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-int printchar(char c);
-/* int _printstring(char* str); */
+int add_char_buffer(char c, char *buffer, int index);
+int add_str_buffer(char* str, char *buffer, int index);
+int printbuffer(char* buffer, int index);
 int _printf(const char *format, ...);
 
 #endif /* main.h */

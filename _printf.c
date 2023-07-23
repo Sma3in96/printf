@@ -9,9 +9,11 @@
 int _printf(const char *format, ...)
 {
 	va_list ar;
-	int i;
+	int index = 0, i = 0;
+	char* buffer;
 
 	va_start(ar, format);
+	buffer = malloc(1024);
 	while (format && format[i])
 	{
 		if (format[i] == '%')
@@ -19,18 +21,27 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case 'c':
-					printchar(va_arg(ar, int));
-					i++;
+					index = add_char_buffer(va_arg(ar, int), buffer, index);
+					break;
+				case 's':
+					index = add_str_buffer(va_arg(ar, char*), buffer, index);
+					break;
+				case '%':
+					index = add_char_buffer(format[i + 1], buffer, index);
+					break;
+				default:
+					index = add_char_buffer(format[i + 1], buffer, index);
 					break;
 			}
-			printchar(format[i]);
+			i++;
 		}
 		else
 		{
-			printchar(format[i]);
+			index = add_char_buffer(format[i], buffer, index);
 		}
 		i++;
 	}
+	printbuffer(buffer, index);
 	va_end(ar);
 	return (i);
 }

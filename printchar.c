@@ -1,12 +1,13 @@
 #include "main.h"
 /**
- * printchar - putchar
+ * add_char_buffer - putchar
  * @c: char
  *
  * Return: 1
  */
-int printchar(char c)
+int add_char_buffer(char c, char *buffer, int index)
 {
-	write(1, &c, 1);
-	return (1);
+	buffer[index] = c;
+	index++;
+	return (index);
 }
