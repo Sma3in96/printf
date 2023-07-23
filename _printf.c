@@ -13,6 +13,10 @@ int _printf(const char *format, ...)
 	char* buffer;
 
 	va_start(ar, format);
+	if (!format)
+		return (-1);
+	if (!format[i])
+		return (0);
 	buffer = malloc(1024);
 	while (format && format[i])
 	{
@@ -20,6 +24,9 @@ int _printf(const char *format, ...)
 		{
 			switch (format[i + 1])
 			{
+				case '\0':
+					index = add_char_buffer(format[i], buffer, index);
+					break;
 				case 'c':
 					index = add_char_buffer(va_arg(ar, int), buffer, index);
 					break;
@@ -30,7 +37,7 @@ int _printf(const char *format, ...)
 					index = add_char_buffer(format[i + 1], buffer, index);
 					break;
 				default:
-					index = add_char_buffer(format[i + 1], buffer, index);
+					index = add_char_buffer(format[i], buffer, index);
 					break;
 			}
 			i++;
