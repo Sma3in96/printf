@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 		return (-1);
 	if (!format[i])
 		return (0);
-	buffer = malloc(1024);
+	buffer = malloc(1024 * sizeof(char));
 	while (format && format[i])
 	{
 		if (format[i] == '%')
@@ -25,30 +25,33 @@ int _printf(const char *format, ...)
 			switch (format[i + 1])
 			{
 				case '\0':
-					index = add_char_buffer(format[i], buffer, index);
+					index = add_to_buffer(format[i], buffer, index);
 					break;
 				case 'c':
-					index = add_char_buffer(va_arg(ar, int), buffer, index);
+					index = add_to_buffer(va_arg(ar, int), buffer, index);
 					break;
 				case 's':
 					index = add_str_buffer(va_arg(ar, char*), buffer, index);
 					break;
 				case '%':
-					index = add_char_buffer(format[i + 1], buffer, index);
+					index = add_to_buffer(format[i + 1], buffer, index);
+					break;
+				case 'd':
+					index = add_int_buffer(va_arg(ar, int), buffer, index);
+					break;
+				case 'i':
+					index = add_int_buffer(va_arg(ar, int), buffer, index);
 					break;
 				default:
-					index = add_char_buffer(format[i], buffer, index);
+					index = add_to_buffer(format[i], buffer, index);
 					break;
 			}
 			i++;
 		}
 		else
-		{
-			index = add_char_buffer(format[i], buffer, index);
-		}
+			index = add_to_buffer(format[i], buffer, index);
 		i++;
 	}
-	printbuffer(buffer, index);
-	va_end(ar);
+	printbuffer(buffer, index),va_end(ar),free(buffer);
 	return (index);
 }

@@ -11,8 +11,8 @@ int add_str_buffer(char *str, char *buffer, int index)
 
 	while (str[i] != '\0')
 	{
-		buffer[index] = str[i];
-		index++, i++;
+		index = add_to_buffer(str[i], buffer, index);
+		i++;
 	}
 	return (index);
 }
