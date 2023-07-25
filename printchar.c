@@ -2,6 +2,8 @@
 /**
  * add_to_buffer - putchar
  * @c: char
+ * @buffer: buffer
+ * @index: actual index
  *
  * Return: 1
  */
