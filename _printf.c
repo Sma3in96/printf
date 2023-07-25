@@ -7,7 +7,7 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int i = 0, index = 0, nubchar =0;
+	unsigned int i = 0, index = 0, nubchar = 0;
 	va_list ar;
 	char *buffer;
 
@@ -31,36 +31,36 @@ int _printf(const char *format, ...)
 				va_end(ar);
 				break;
 			case 'c':
-				index = add_to_buffer(va_arg(ar, int), buffer, index);
+				nubchar += add_to_buffer(va_arg(ar, int), buffer, index);
 				i++;
 				break;
 			case 's':
-				index = add_str_buffer(va_arg(ar, char *), buffer, index);
+				nubchar += add_str_buffer(va_arg(ar, char *), buffer, index);
 				i++;
 				break;
 			case 'i':
-				index = add_int_buffer(va_arg(ar, int), buffer, index);
+				nubchar += add_int_buffer(va_arg(ar, int), buffer, index);
 				i++;
 				break;
 			case 'd':
-				index = add_int_buffer(va_arg(ar, int), buffer, index);
+				nubchar += add_int_buffer(va_arg(ar, int), buffer, index);
 				i++;
 				break;
 			case '%':
-				index = add_to_buffer('%', buffer, index);
+				nubchar += add_to_buffer('%', buffer, index);
 				i++;
 				break;
 			default :
-				index = add_to_buffer(format[i], buffer, index);
+				nubchar += add_to_buffer(format[i], buffer, index);
 				break;
 			}
 		}
 		else
-			index = add_to_buffer(format[i], buffer, index);
+			nubchar += add_to_buffer(format[i], buffer, index);
 		i++;
 	}
 	printbuffer(buffer, index);
 	free(buffer);
 	va_end(ar);	
-	return (index + nubchar);
+	return (nubchar);
 }

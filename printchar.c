@@ -14,5 +14,5 @@ int add_to_buffer(char c, char *buffer, int index)
 	}
 	buffer[index] = c;
 	index++;
-	return (index);
+	return (1);
 }
