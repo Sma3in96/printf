@@ -15,7 +15,7 @@ int add_int_buffer(int d ,char *buffer,int index)
 		num = d * -1;
 		index = add_to_buffer('-', buffer, index);
 	}
-	else
+	if (sign == 0)
 		num = d;
 	vtemp = num;
 	while (vtemp > 9)
@@ -29,5 +29,5 @@ int add_int_buffer(int d ,char *buffer,int index)
 		divider /= 10;
 		j++;
 	}
-	return (j + sign);
+	return (index);
 }

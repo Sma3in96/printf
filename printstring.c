@@ -24,5 +24,5 @@ int add_str_buffer(char *str, char *buffer, int index)
 		index = add_to_buffer(str[i], buffer, index);
 		i++;
 	}
-	return (i);
+	return (index);
 }
