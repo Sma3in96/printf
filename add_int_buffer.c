@@ -5,7 +5,7 @@
  * @buffer: buffer
  * @index: actual index
  */
-int add_int_buffer(int d ,char *buffer,int index)
+int add_int_buffer(int d, char *buffer, int index)
 {
 	unsigned int num, sign = 0, vtemp, divider = 1, j = 0;
 
