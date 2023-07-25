@@ -2,6 +2,6 @@
 
 int main()
 {
-	_printf("foot%ifoot%dfoot%s\n",34,-23,"gool");
+	_printf("foot%dfoot%dfoot%s\n",46,48,"gool");
 	return 0;
 }

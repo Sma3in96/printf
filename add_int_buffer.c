@@ -7,21 +7,26 @@
  */
 int add_int_buffer(int d ,char *buffer,int index)
 {
-	unsigned int sign = 0, vtemp, i, j = 0;
+	unsigned int num, sign = 0, vtemp, divider = 1, j = 0;
 
 	if (d < 0)
 	{
 		sign = 1;
-		d = d * -1;
+		num = d * -1;
 		index = add_to_buffer('-', buffer, index);
 	}
-	vtemp = d;
-	for (i = 1; d > 9; i *= 10)
-		d = d / 10;
-	while (i > 0)
+	else
+		num = d;
+	vtemp = num;
+	while (vtemp > 9)
 	{
-		index = add_to_buffer(48 + ((vtemp / i) % 10), buffer, index);
-		i /= 10;
+		vtemp /= 10;
+		divider *= 10;
+	}
+	while (divider > 0)
+	{
+		index = add_to_buffer(((num / divider) % 10) + '0', buffer, index);
+		divider /= 10;
 		j++;
 	}
 	return (j + sign);
