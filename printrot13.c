@@ -14,7 +14,7 @@ int printrot13(char *s, char *buffer, int index)
 
 	while (s[i])
 	{
-		for (j = 0; j < 52, j++)
+		for (j = 0; j < 52; j++)
 		{
 			if (alphab[j] == s[i])
 			{

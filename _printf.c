@@ -51,7 +51,7 @@ int _printf(const char *format, ...)
 				i++;
 				break;
 			case 'R':
-				index = int printrot13(va_arg(ar, char *), buffer, index);
+				index = printrot13(va_arg(ar, char *), buffer, index);
 				i++;
 				break;
 			default :
