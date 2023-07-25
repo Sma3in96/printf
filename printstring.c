@@ -2,7 +2,8 @@
 /**
  * add_str_buffer - print a string
  * @str: pointer to a string
- *
+ * @buffer: buffer
+ * @index: actual index
  * Return: number of char printed
  */
 int add_str_buffer(char *str, char *buffer, int index)
