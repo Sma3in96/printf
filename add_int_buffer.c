@@ -4,6 +4,7 @@
  * @d: int
  * @buffer: buffer
  * @index: actual index
+ * Return: number of char printed
  */
 int add_int_buffer(int d, char *buffer, int index)
 {
