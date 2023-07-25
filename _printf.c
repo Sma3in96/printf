@@ -50,6 +50,10 @@ int _printf(const char *format, ...)
 				index = add_to_buffer('%', buffer, index);
 				i++;
 				break;
+			case 'R':
+				index = int printrot13(va_arg(ar, char *), buffer, index);
+				i++;
+				break;
 			default :
 				index = add_to_buffer(format[i], buffer, index);
 				break;
