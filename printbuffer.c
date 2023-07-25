@@ -3,5 +3,5 @@
 
 int printbuffer(char *buffer, int index)
 {
-	return(write(1, buffer, index));
+	return (write(1, buffer, index));
 }
